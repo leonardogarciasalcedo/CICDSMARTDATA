@@ -36,7 +36,7 @@ jobs:
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
-          echo "Creando carpeta $DEST_BASE si no existe..."
+          echo "Creando carpeta $DEST_BASE si no existe... "
           curl -s -X POST \
             -H "Authorization: Bearer $DEST_TOKEN" \
             -H "Content-Type: application/json" \
@@ -166,7 +166,7 @@ jobs:
               "task_key": "sqlgld",
               "description": "Ejecuta notebook sqlgld",
               "notebook_task": {
-                "notebook_path": "/sm/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/sqlgld",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/sqlgld",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -405,11 +405,12 @@ jobs:
         echo "🎉 ¡Despliegue y ejecución completados exitosamente!"
         echo ""
         echo "📊 Resumen:"
-        echo "✅ Notebooks desplegados: ntbk_1, ntbk_2"
+        echo "✅ Notebooks desplegados: "INSERT" "LOAD" "sqlgld"
         echo "✅ Workflow creado: WF_Evaluacion"
         echo "✅ Tareas configuradas:"
-        echo "   - tarea1_notebook1 (ntbk_1)"
-        echo "   - tarea2_notebook2 (ntbk_2)"
+        echo "   - tarea1_Extract (INSERT)"
+        echo "   - tarea2_transform (LOAD)"
+        echo "   - tarea3_Load (sqlgld)"
         echo "✅ Cluster existente: cluster_SD configurado"
         echo "🚀 Workflow ejecutado automáticamente"
         echo ""
