@@ -17,7 +17,7 @@ jobs:
       run: |
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
-        NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/"
+        NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso"
         NOTEBOOKS=("INSERT" "LOAD" "sqlgld")  # Agrega más según necesitesas
         mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
@@ -130,7 +130,7 @@ jobs:
               "task_key": "INSERT",
               "description": "Ejecuta notebook INSERT",
               "notebook_task": {
-                "notebook_path": "/smartdata/scripts/main/INSERT",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/INSERT",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "storageName": "adlsevaluleo"
@@ -144,7 +144,7 @@ jobs:
               "task_key": "LOAD",
               "description": "Ejecuta notebook LOAD",
               "notebook_task": {
-                "notebook_path": "/smartdata/scripts/main/LOAD",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/LOAD",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -166,7 +166,7 @@ jobs:
               "task_key": "sqlgld",
               "description": "Ejecuta notebook sqlgld",
               "notebook_task": {
-                "notebook_path": "/smartdata/scripts/main/sqlgld",
+                "notebook_path": "/sm/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/sqlgld",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
