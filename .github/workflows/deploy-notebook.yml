@@ -129,7 +129,7 @@ jobs:
               "task_key": "Preparacion_Ambiente",
               "description": "Ejecuta notebook Preparacion_Ambiente",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/Preparacion_Ambiente",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/Preparacion_Ambiente",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "storageName": "adlsevaluleo"
@@ -143,7 +143,7 @@ jobs:
               "task_key": "Cust_det",
               "description": "Ejecuta notebook Cust_det",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/Cust_det",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/Cust_det",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -165,7 +165,7 @@ jobs:
               "task_key": "department",
               "description": "Ejecuta notebook department",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/department",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/department",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -187,7 +187,7 @@ jobs:
               "task_key": "orders",
               "description": "Ejecuta notebook orders",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/orders",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/orders",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -209,7 +209,7 @@ jobs:
               "task_key": "order_q",
               "description": "Ejecuta notebook order_q",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/order_q",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/order_q",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -231,7 +231,7 @@ jobs:
               "task_key": "product",
               "description": "Ejecuta notebook product",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/product",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/product",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -253,7 +253,7 @@ jobs:
               "task_key": "product_place",
               "description": "Ejecuta notebook product_place",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/product_place",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/product_place",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -275,7 +275,7 @@ jobs:
               "task_key": "ETL",
               "description": "Ejecuta notebook ETL",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/ETL",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/ETL",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "catalogo": "catalog_au",
@@ -311,7 +311,7 @@ jobs:
               "task_key": "LOAD",
               "description": "Ejecuta notebook LOAD",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/LOAD",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/LOAD",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "catalogo": "catalog_au",
@@ -332,7 +332,7 @@ jobs:
               "task_key": "sqlgld",
               "description": "Ejecuta notebook sqlgld",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/FinalProject/sqlgld",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/sqlgld",
                 "source": "WORKSPACE"
               },
               "existing_cluster_id": "$CLUSTER_ID",
