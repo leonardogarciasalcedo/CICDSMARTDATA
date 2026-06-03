@@ -35,7 +35,7 @@ jobs:
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
-          echo "Creando carpeta $DEST_BASE si no existe..."
+          echo "Creando carpeta $DEST_BASE si no existe...."
           curl -s -X POST \
             -H "Authorization: Bearer $DEST_TOKEN" \
             -H "Content-Type: application/json" \
