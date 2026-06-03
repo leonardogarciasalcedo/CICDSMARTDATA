@@ -17,7 +17,7 @@ jobs:
       run: |
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
-        NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/"
+        NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso"
         NOTEBOOKS=("Preparacion_Ambiente" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")  # Agrega más según necesitesas mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
@@ -58,7 +58,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        WORKFLOW_NAME="WF_Evaluacion"
+        WORKFLOW_NAME="WF_Evalua"
         
         echo "Verificando si existe el workflow: $WORKFLOW_NAME"
         
