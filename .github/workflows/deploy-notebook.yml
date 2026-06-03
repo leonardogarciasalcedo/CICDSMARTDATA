@@ -18,8 +18,7 @@ jobs:
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
         NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/"
-        NOTEBOOKS=("INSERT" "LOAD" "sqlgld")  # Agrega más según necesitesas
-        mkdir -p notebooks_to_deploy
+        NOTEBOOKS=("Preparacion_Ambiente" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")  # Agrega más según necesitesas        mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
           curl -s -X GET \
@@ -36,7 +35,7 @@ jobs:
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
-          echo "Creando carpeta $DEST_BASE si no existe... "
+          echo "Creando carpeta $DEST_BASE si no existe..."
           curl -s -X POST \
             -H "Authorization: Bearer $DEST_TOKEN" \
             -H "Content-Type: application/json" \
@@ -127,10 +126,10 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "INSERT",
-              "description": "Ejecuta notebook INSERT",
+              "task_key": "Preparacion_Ambiente",
+              "description": "Ejecuta notebook Preparacion_Ambiente",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/INSERT",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/Preparacion_Ambiente",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "storageName": "adlsevaluleo"
@@ -141,10 +140,10 @@ jobs:
               "max_retries": 2
             },
             {
-              "task_key": "LOAD",
-              "description": "Ejecuta notebook LOAD",
+              "task_key": "Cust_det",
+              "description": "Ejecuta notebook Cust_det",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/LOAD",
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/Cust_det",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -158,7 +157,174 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "INSERT"
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            },
+            {
+              "task_key": "department",
+              "description": "Ejecuta notebook department",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/department",
+                "source": "WORKSPACE",
+                "base_parameters": {
+                  "container": "raw",
+                  "catalogo": "catalog_au",
+                  "esquema": "bronze",
+                  "storageName": "adlsevaluleo"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            },
+            {
+              "task_key": "orders",
+              "description": "Ejecuta notebook orders",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/orders",
+                "source": "WORKSPACE",
+                  "base_parameters": {
+                  "container": "raw",
+                  "catalogo": "catalog_au",
+                  "esquema": "bronze",
+                  "storageName": "adlsevaluleo"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            },
+            {
+              "task_key": "order_q",
+              "description": "Ejecuta notebook order_q",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/order_q",
+                "source": "WORKSPACE",
+                  "base_parameters": {
+                  "container": "raw",
+                  "catalogo": "catalog_au",
+                  "esquema": "bronze",
+                  "storageName": "adlsevaluleo"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            }, 
+            {
+              "task_key": "product",
+              "description": "Ejecuta notebook product",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/product",
+                "source": "WORKSPACE",
+                  "base_parameters": {
+                  "container": "raw",
+                  "catalogo": "catalog_au",
+                  "esquema": "bronze",
+                  "storageName": "adlsevaluleo"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            },  
+            {
+              "task_key": "product_place",
+              "description": "Ejecuta notebook product_place",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/product_place",
+                "source": "WORKSPACE",
+                  "base_parameters": {
+                  "container": "raw",
+                  "catalogo": "catalog_au",
+                  "esquema": "bronze",
+                  "storageName": "adlsevaluleo"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Preparacion_Ambiente"
+                }
+              ]
+            }, 
+            {
+              "task_key": "ETL",
+              "description": "Ejecuta notebook ETL",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/ETL",
+                "source": "WORKSPACE",
+                  "base_parameters": {
+                  "catalogo": "catalog_au",
+                  "esquema_source": "bronze",
+                  "esquema_sink": "silver"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Cust_det"
+                },
+                {
+                  "task_key": "department"
+                },
+                {
+                  "task_key": "orders"
+                },
+                 {
+                  "task_key": "order_q"
+                },
+                 {
+                  "task_key": "product"
+                },
+                 {
+                  "task_key": "product_place"
+                }
+              ]
+            },
+            {
+              "task_key": "LOAD",
+              "description": "Ejecuta notebook LOAD",
+              "notebook_task": {
+                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/LOAD",
+                "source": "WORKSPACE",
+                "base_parameters": {
+                  "catalogo": "catalog_au",
+                  "esquema_source": "silver",
+                  "esquema_sink": "golden"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "ETL"
                 }
               ]
             },
@@ -167,13 +333,7 @@ jobs:
               "description": "Ejecuta notebook sqlgld",
               "notebook_task": {
                 "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/Evaluacion/scripts/main/sqlgld",
-                "source": "WORKSPACE",
-                "base_parameters": {
-                  "container": "raw",
-                  "catalogo": "catalog_au",
-                  "esquema": "bronze",
-                  "storageName": "adlsevaluleo"
-                }
+                "source": "WORKSPACE"
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
@@ -405,12 +565,19 @@ jobs:
         echo "🎉 ¡Despliegue y ejecución completados exitosamente!"
         echo ""
         echo "📊 Resumen:"
-        echo "✅ Notebooks desplegados: "INSERT" "LOAD" "sqlgld"
+        echo "✅ Preparacion_Ambiente Cust_det department orders order_q product product_place ETL LOAD sqlgld
         echo "✅ Workflow creado: WF_Evaluacion"
         echo "✅ Tareas configuradas:"
-        echo "   - tarea1_Extract (INSERT)"
-        echo "   - tarea2_transform (LOAD)"
-        echo "   - tarea3_Load (sqlgld)"
+        echo "   - Preparacion_Ambiente (Preparacion_Ambiente)"
+        echo "   - Cust_det (Cust_det)"
+        echo "   - department (department)"
+        echo "   - orders (orders)"
+        echo "   - orders_q (orders_q)"
+        echo "   - product (product)"
+        echo "   - product_place (product_place)"
+        echo "   - ETL (ETL)"
+        echo "   - LOAD (LOAD)"
+        echo "   - sqlgld (sqlgld)"
         echo "✅ Cluster existente: Leoclus configurado"
         echo "🚀 Workflow ejecutado automáticamente"
         echo ""
