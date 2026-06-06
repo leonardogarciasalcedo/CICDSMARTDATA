@@ -18,7 +18,7 @@ jobs:
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
         NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso"
-        NOTEBOOKS=("Preparacion_Ambiente" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")  # Agrega más según necesitesas mkdir -p notebooks_to_deploy
+        NOTEBOOKS=("Prep_Amb" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")  # Agrega más según necesitesas mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
           curl -s -X GET \
@@ -31,7 +31,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        DEST_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/Scripts/main"
+        DEST_BASE="/Scripts/main"
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
