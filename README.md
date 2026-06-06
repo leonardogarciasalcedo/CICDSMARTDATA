@@ -41,11 +41,11 @@ Usamos GitHub configurado con seguridad con access tokens entre DEV GITHUB y de 
 
 📊 Grafico: para el mejor entendimiento de parte del negocio se construyo una conexion avanzada con Power BI a través de Delta Sharing.
 ## Power BI Dashboard
-![Power Bi Dashboard](evidencias/power bi.jpg)
+![Power Bi Dashboard](evidencias/powerbi.jpg)
 
 ## Porwe BI data
 
-![Power Bi data](evidencias/power bi2.jpg)
+![Power Bi data](evidencias/powerbi2.jpg)
 
 ## Creacion de GOLDEN data en tabla Azure
 
