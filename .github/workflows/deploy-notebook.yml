@@ -13,12 +13,15 @@ jobs:
     - name: Install jq &  curl
       run: sudo apt-get update && sudo apt-get install -y jq curl
     
-    - name: Export multiple notebooks (raw)
+  - name: Export multiple notebooks (raw)
       run: |
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
         NOTEBOOK_BASE="/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso"
-        NOTEBOOKS=("Prep_Amb" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")  # Agrega más según necesitesas mkdir -p notebooks_to_deploy
+        NOTEBOOKS=("Prep_Amb" "Cust_det" "department" "orders" "order_q" "product" "product_place" "ETL" "LOAD" "sqlgld")
+        
+        mkdir -p notebooks_to_deploy   # ✅ ensure directory exists
+        
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
           curl -s -X GET \
@@ -114,7 +117,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        DEST_BASE="/py/scripts/main"
+        DEST_BASE="/Scripts/main"
         CLUSTER_ID="${{ env.CLUSTER_ID }}"
         
         echo "Creando workflow: WF_Evalua con cluster existente ID: $CLUSTER_ID"
@@ -137,7 +140,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6
+              "max_retries": 2
             },
             {
               "task_key": "Cust_det",
@@ -154,7 +157,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -176,7 +179,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -198,7 +201,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -220,7 +223,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -242,7 +245,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -264,7 +267,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Prep_Amb"
@@ -285,7 +288,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "Cust_det"
@@ -321,7 +324,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "ETL"
@@ -337,7 +340,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 6,
+              "max_retries": 2,
               "depends_on": [
                 {
                   "task_key": "LOAD"
