@@ -126,10 +126,10 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "Preparacion_Ambiente",
-              "description": "Ejecuta notebook Preparacion_Ambiente",
+              "task_key": "Prep_Amb",
+              "description": "Ejecuta notebook Prep_Amb",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/Preparacion_Ambiente",
+                "notebook_path": "/Scripts/main/Prep_Amb",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "storageName": "adlsevaluleo"
@@ -143,7 +143,7 @@ jobs:
               "task_key": "Cust_det",
               "description": "Ejecuta notebook Cust_det",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/Cust_det",
+                "notebook_path": "/Scripts/main/Cust_det",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -157,7 +157,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             },
@@ -165,7 +165,7 @@ jobs:
               "task_key": "department",
               "description": "Ejecuta notebook department",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/department",
+                "notebook_path": "/Scripts/main/department",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "container": "raw",
@@ -179,7 +179,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             },
@@ -187,7 +187,7 @@ jobs:
               "task_key": "orders",
               "description": "Ejecuta notebook orders",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/orders",
+                "notebook_path": "/Scripts/main/orders",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -201,7 +201,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             },
@@ -209,7 +209,7 @@ jobs:
               "task_key": "order_q",
               "description": "Ejecuta notebook order_q",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/order_q",
+                "notebook_path": "/Scripts/main/order_q",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -223,7 +223,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             }, 
@@ -231,7 +231,7 @@ jobs:
               "task_key": "product",
               "description": "Ejecuta notebook product",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/product",
+                "notebook_path": "/Scripts/main/product",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -245,7 +245,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             },  
@@ -253,7 +253,7 @@ jobs:
               "task_key": "product_place",
               "description": "Ejecuta notebook product_place",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/product_place",
+                "notebook_path": "/Scripts/main/product_place",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "container": "raw",
@@ -267,7 +267,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion_Ambiente"
+                  "task_key": "Prep_Amb"
                 }
               ]
             }, 
@@ -275,7 +275,7 @@ jobs:
               "task_key": "ETL",
               "description": "Ejecuta notebook ETL",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/ETL",
+                "notebook_path": "/Scripts/main/ETL",
                 "source": "WORKSPACE",
                   "base_parameters": {
                   "catalogo": "catalog_au",
@@ -311,7 +311,7 @@ jobs:
               "task_key": "LOAD",
               "description": "Ejecuta notebook LOAD",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/LOAD",
+                "notebook_path": "/Scripts/main/LOAD",
                 "source": "WORKSPACE",
                 "base_parameters": {
                   "catalogo": "catalog_au",
@@ -332,7 +332,7 @@ jobs:
               "task_key": "sqlgld",
               "description": "Ejecuta notebook sqlgld",
               "notebook_task": {
-                "notebook_path": "/Workspace/Users/leonardogarciasalcedo@gmail.com/CICDSMARTDATA/proceso/sqlgld",
+                "notebook_path": "/Scripts/main/sqlgld",
                 "source": "WORKSPACE"
               },
               "existing_cluster_id": "$CLUSTER_ID",
