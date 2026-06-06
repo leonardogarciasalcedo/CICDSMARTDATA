@@ -10,7 +10,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
     
-    - name: Install jq & curl
+    - name: Install jq &  curl
       run: sudo apt-get update && sudo apt-get install -y jq curl
     
     - name: Export multiple notebooks (raw)
